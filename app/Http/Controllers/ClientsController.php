@@ -11,6 +11,7 @@ class ClientsController extends Controller
     public function clients()
     {
         $clients = ClientsModel::orderBy('created_at', 'asc')->paginate(5);
+
         return View('dashboard.clients', ['clients' => $clients]);
     }
     public function save_clients(ClientRequest $client_request, ClientsModel $clients)

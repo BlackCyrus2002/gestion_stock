@@ -30,7 +30,7 @@
                         </div>
                     </form>
                     <div class="flex justify-end mr-5">
-                        <a href="#" data-modal-target="new_commande" data-modal-toggle="static-modal"
+                        <a href="#" data-modal-target="static-modal" data-modal-toggle="static-modal"
                             class="bg-blue-600 text-white py-2 px-3 rounded-md hover:bg-blue-800 ">Ajouter
                             une nouvelle commande
                         </a>
@@ -41,9 +41,7 @@
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    ID
-                                </th>
+
                                 <th scope="col" class="px-6 py-3">
                                     Nom et prénom du client
                                 </th>
@@ -63,45 +61,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                                <td class="px-6 py-4">
-                                    1
-                                </td>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Assan Cyriac
-                                </th>
-                                <td class="px-6 py-4">
-                                    17-03-2025
-                                </td>
-                                <td class="px-6 py-4">
-                                    En cours...
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#" data-modal-target="static-modal" data-modal-toggle="static-modal">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                            width="24px" fill="#0000F5">
-                                            <path
-                                                d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" />
-                                        </svg>
-                                    </a>
-                                </td>
+                            @foreach ($commandes as $commande)
+                                <tr
+                                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
 
-                                <td class="px-6 py-4">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</a>
-                                    <a href="#"
-                                        class="font-medium text-red-600 dark:text-blue-500 hover:underline">Supprimer</a>
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $commande->client->nom }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ $commande->date_commande }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $commande->statut }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="#" data-modal-target="static-modal"
+                                            data-modal-toggle="static-modal-{{ $commande->id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                viewBox="0 -960 960 960" width="24px" fill="#0000F5">
+                                                <path
+                                                    d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" />
+                                            </svg>
+                                        </a>
+                                    </td>
 
-                                </td>
-                            </tr>
+                                    <td class="px-6 py-4">
+                                        <a href="#"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Modifier</a>
+                                        <a href="#"
+                                            class="font-medium text-red-600 dark:text-blue-500 hover:underline">Supprimer</a>
+
+                                    </td>
+                                </tr>
+                                @include('dashboard.detail_commande')
+                            @endforeach
 
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        @include('dashboard.detail_commande')
+
     </div>
 </x-app-layout>

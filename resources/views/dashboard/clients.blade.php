@@ -103,6 +103,5 @@
                 </div>
             </div>
         </div>
-        @include('dashboard.detail_commande')
     </div>
 </x-app-layout>

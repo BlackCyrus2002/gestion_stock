@@ -13,7 +13,7 @@ class CommandesController extends Controller
 {
     public function commandes()
     {
-        $commandes = CommandesModel::orderBy('created_at', 'desc')->paginate(50);
+        $commandes = CommandesModel::orderBy('id', 'desc')->paginate(50);
         $produits = ProduitsModel::all();
         $clients = ClientsModel::all();
         return View('dashboard.commandes', [

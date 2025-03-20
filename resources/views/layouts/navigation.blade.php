@@ -100,22 +100,22 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 space-y-1">
-            <x-responsive-nav-link :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard.commandes')" :active="request()->routeIs('dashboard')">
                 {{ __('Commandes') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 space-y-1">
-            <x-responsive-nav-link :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard.fournisseurs')" :active="request()->routeIs('dashboard')">
                 {{ __('Fournisseurs') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 space-y-1">
-            <x-responsive-nav-link :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard.entree_stock')" :active="request()->routeIs('dashboard')">
                 {{ __('Entreer de stock') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 space-y-1">
-            <x-responsive-nav-link :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('dashboard.sortie_stock')" :active="request()->routeIs('dashboard')">
                 {{ __('Sortie de stock') }}
             </x-responsive-nav-link>
         </div>
